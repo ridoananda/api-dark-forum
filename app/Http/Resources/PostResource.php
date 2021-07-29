@@ -17,7 +17,7 @@ class PostResource extends JsonResource
       
       return [
         'user' => $this->user,
-        'title' => $this->title,
+        'title' => \Str::words($this->title, 8, '...'),
         'slug' => $this->slug,
         'thumbnail' => env('APP_URL').'/storage/'.$this->thumbnail,
         'text' => $this->text,
