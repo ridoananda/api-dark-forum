@@ -23,9 +23,10 @@ class PostFactory extends Factory
   {
     $title = $this->faker->sentence(10);
     return [
-      'user_id' => 1,
+      'user_id' => rand(1,10),
       'title' => $title,
       'slug' => \Str::slug($title),
+      'thumbnail' => env('APP_URL').'/storage/img/post/thumbnail/10kvrM5UXPSD9YnEoNRr0uXt2Rta9mHBap2HD6o2.jpg',
       'text' => $this->faker->paragraph(15),
     ];
   }

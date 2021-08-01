@@ -17,9 +17,12 @@ class PostResource extends JsonResource
       
       return [
         'user' => $this->user,
-        'title' => \Str::words($this->title, 8, '...'),
+        'title' => [
+          'limit' => \Str::limit($this->title, 68),
+          'full' => $this->title
+        ],
         'slug' => $this->slug,
-        'thumbnail' => env('APP_URL').'/storage/'.$this->thumbnail,
+        'thumbnail' => $this->thumbnail,
         'text' => $this->text,
         'created_at' => [
           'month' => $this->created_at->format('d F'),

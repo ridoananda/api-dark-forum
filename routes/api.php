@@ -8,6 +8,10 @@ Route::get('/migrate', function (Request $request) {
   Artisan::call('migrate');
   return response()->json(['message'=> 'migrated'], 200);
 });
+Route::get('/migrate/{param}', function ($param) {
+  Artisan::call('migrate:'.$param);
+  return response()->json(['message'=> $param . ' migrated!'], 200);
+});
 Route::get('/db-seed/{param}', function ($param) {
   Artisan::call('db:seed '.$param);
   return response()->json(['message'=> $param . ' was seeded!'], 200);
